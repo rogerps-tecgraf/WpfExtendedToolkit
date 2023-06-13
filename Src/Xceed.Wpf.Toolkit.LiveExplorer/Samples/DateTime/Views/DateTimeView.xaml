@@ -124,7 +124,7 @@
             <TextBlock Text="Minimum:" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center"/>
             <xctk:DateTimeUpDown x:Name="_minimum" Grid.Row="3" Grid.Column="3" Format="Custom" FormatString="yyyy/MM/dd HH:mm" Value="2013/01/01T12:00" Width="190" VerticalAlignment="Center" Margin="5"/>
             <TextBlock Text="Maximum:" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center"/>
-            <xctk:DateTimeUpDown x:Name="_maximum" Grid.Row="4" Grid.Column="3" Format="Custom" FormatString="yyyy/MM/dd HH:mm" Value="2018/12/31T12:00" Width="190" VerticalAlignment="Center" Margin="5"/>
+            <xctk:DateTimeUpDown x:Name="_maximum" Grid.Row="4" Grid.Column="3" Format="Custom" FormatString="yyyy/MM/dd HH:mm" Value="2028/12/31T12:00" Width="190" VerticalAlignment="Center" Margin="5"/>
             <TextBlock Text="CurrentDateTimePart:" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center"/>
             <ComboBox x:Name="_currentDateTimePart" Grid.Row="5" Grid.Column="3" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource enumDateTimePart}}" Width="190" Margin="5" ToolTip="Must match a DateTimePart of the DateTimePicker Format."/>
             <TextBlock Text="Auto Clip time Parts:" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center"/>

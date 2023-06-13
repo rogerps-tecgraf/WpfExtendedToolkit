@@ -293,8 +293,14 @@ namespace Xceed.Wpf.Toolkit
 
       if( _calendar != null && _calendar.SelectedDate != newValueDate)
       {
-        _calendar.SelectedDate = newValueDate;
-        _calendar.DisplayDate = newValue.GetValueOrDefault( this.ContextNow );
+        var day = _calendar.SelectedDate.Value.Day;
+        var month = _calendar.SelectedDate.Value.Month;
+        var year = _calendar.SelectedDate.Value.Year;
+        var hour = newValue.Value.Hour;
+        var minute = newValue.Value.Minute;
+        var second = newValue.Value.Second;
+
+        newValue = new DateTime(year, month, day, hour, minute, second);
       }
 
       //If we change any part of the datetime without
@@ -341,6 +347,34 @@ namespace Xceed.Wpf.Toolkit
       this.SetBlackOutDates();
     }
 
+    protected override void OnIncrement()
+    {
+      base.OnIncrement();
+
+      DateTime? newValueDate = (Value != null)
+        ? Value.Value.Date
+        : (DateTime?)null;
+
+      if (_calendar != null && _calendar.SelectedDate != newValueDate)
+      {
+        _calendar.SelectedDate = newValueDate;
+      }
+    }
+
+    protected override void OnDecrement()
+    {
+      base.OnDecrement();
+
+      DateTime? newValueDate = (Value != null)
+        ? Value.Value.Date
+        : (DateTime?)null;
+
+      if (_calendar != null && _calendar.SelectedDate != newValueDate)
+      {
+        _calendar.SelectedDate = newValueDate;
+      }
+    }
+
     #endregion //Base Class Overrides
 
     #region Event Handlers
@@ -373,6 +407,11 @@ namespace Xceed.Wpf.Toolkit
         {
           _fireSelectionChangedEvent = false;
           var currentDate = this.ConvertTextToValue( this.TextBox.Text );
+          if (_calendar != null && _calendar.SelectedDate != null)
+          {
+            currentDate = _calendar.SelectedDate;
+          }
+
           var date = currentDate ?? this.ContextNow;
           var newValue = new DateTime( date.Year, date.Month, date.Day, newTime.Value.Hour, newTime.Value.Minute, newTime.Value.Second, newTime.Value.Millisecond, date.Kind );
           this.TextBox.Text = newValue.ToString( this.GetFormatString( this.Format ), this.CultureInfo );
