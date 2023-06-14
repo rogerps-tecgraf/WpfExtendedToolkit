@@ -23,7 +23,7 @@ namespace Xceed.Wpf.Toolkit.LiveExplorer.Samples.DateTime.Views
   {
     public DateTimeView()
     {
-      InitializeComponent(); 
+      InitializeComponent();
     }
   }
 }

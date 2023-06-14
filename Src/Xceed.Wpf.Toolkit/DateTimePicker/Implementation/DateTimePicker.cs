@@ -291,7 +291,7 @@ namespace Xceed.Wpf.Toolkit
         ? newValue.Value.Date 
         : (DateTime?)null;
 
-      if( _calendar != null && _calendar.SelectedDate != newValueDate)
+      if (_calendar != null && _calendar.SelectedDate != null && _calendar.SelectedDate != newValueDate)
       {
         var day = _calendar.SelectedDate.Value.Day;
         var month = _calendar.SelectedDate.Value.Month;
